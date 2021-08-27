@@ -1,4 +1,4 @@
-package com.example.template_project
+package com.drunisa.kh.food
 
 import io.flutter.embedding.android.FlutterActivity
 

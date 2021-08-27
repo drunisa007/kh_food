@@ -49,7 +49,7 @@ class MyApp  extends StatelessWidget{
      supportedLocales: context.supportedLocales,
      locale: context.locale,
      onGenerateRoute: generateRoute,
-     initialRoute: ColorPage.id,
+     initialRoute: PostPage.id,
    ));
   }
 }
