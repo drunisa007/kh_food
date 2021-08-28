@@ -65,10 +65,10 @@ class ApiHelper{
        }
 
      }
-     on SocketException catch(e){
+     on SocketException catch(_){
        return HttpResponse(false, [], message: "Problem With the Internet", responseCode: 404);
      }
-     on FormatException catch(e){
+     on FormatException catch(_){
        return HttpResponse(false, [], message: "Format Worng on Server", responseCode: 400);
      }
      catch(e){

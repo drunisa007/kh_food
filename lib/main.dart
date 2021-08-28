@@ -2,11 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:template_project/page_route/color_page.dart';
-import 'package:template_project/page_route/language_change_page.dart';
 import 'package:template_project/page_route/post_page.dart';
 import 'package:template_project/page_route/router.dart';
 import 'package:template_project/provider/language_provider.dart';
+import 'package:template_project/provider/post_pagination_provider.dart';
 import 'package:template_project/provider/post_provider.dart';
 import 'package:template_project/util/generate_material_color.dart';
 
@@ -34,7 +33,8 @@ class MyApp  extends StatelessWidget{
         providers:
         [
           ChangeNotifierProvider(create: (_)=> LanguageProvider()),
-          ChangeNotifierProvider(create: (_)=> PostProvider())
+          ChangeNotifierProvider(create: (_)=> PostProvider()),
+          ChangeNotifierProvider(create: (_)=> PostPaginationProvider())
         ], child: MaterialApp(
      title: 'Home',
      theme: ThemeData(

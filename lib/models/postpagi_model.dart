@@ -1,10 +1,9 @@
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
-PostPagiModel postPagiModelFromJson(String str) => PostPagiModel.fromJson(json.decode(str));
+List<PostPagiModel> postPagiModelFromJson(String str) => List<PostPagiModel>.from(json.decode(str).map((x) => PostPagiModel.fromJson(x)));
 
-String postPagiModelToJson(PostPagiModel data) => json.encode(data.toJson());
+String postPagiModelToJson(List<PostPagiModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class PostPagiModel {
   PostPagiModel({
