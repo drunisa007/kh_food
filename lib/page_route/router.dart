@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:template_project/page_route/color_page.dart';
 import 'package:template_project/page_route/language_change_page.dart';
 import 'package:template_project/page_route/post_page.dart';
+import 'package:template_project/page_route/fav_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -11,6 +12,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => PostPage());
     case ColorPage.id:
       return MaterialPageRoute(builder: (context) => ColorPage());
+    case FavPage.id:
+      return MaterialPageRoute(builder: (context) => FavPage());
     default:
       return MaterialPageRoute(builder: (context) => PostPage());
   }
