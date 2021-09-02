@@ -9,48 +9,51 @@ import 'package:template_project/page_route/router.dart';
 import 'package:template_project/provider/language_provider.dart';
 import 'package:template_project/provider/post_provider.dart';
 import 'package:template_project/util/generate_material_color.dart';
+import 'package:template_project/page_route/item_detail_page.dart';
 
- void main() async {
-   print('working');
+void main() async {
+  print('working');
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   print('wokring');
   runApp(
     EasyLocalization(
-        supportedLocales: [Locale('en', 'US'), Locale('zh', 'CN'),Locale('my', 'MM'),],
-        path: 'resources/langs', // <-- change the path of the translation files,
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('zh', 'CN'),
+          Locale('my', 'MM'),
+        ],
+        path:
+            'resources/langs', // <-- change the path of the translation files,
         assetLoader: JsonAssetLoader(),
         fallbackLocale: Locale('en', 'US'),
-        child:MyApp()
-    ),
+        child: MyApp()),
   );
 }
 
-class MyApp  extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-   return  MultiProvider(
-        providers:
-        [
-          ChangeNotifierProvider(create: (_)=> LanguageProvider()),
-          ChangeNotifierProvider(create: (_)=> PostProvider())
-        ], child: MaterialApp(
-     title: 'Home',
-     theme: ThemeData(
-         accentColor: generateMaterialColor(Color(0xffFF8500)),
-         primaryColor: generateMaterialColor(Color(0xff04D4F0)),
-         scaffoldBackgroundColor: generateMaterialColor(Color(0xffE9E9E9)),
-         appBarTheme:
-         Theme.of(context).appBarTheme.copyWith(brightness: Brightness.dark),
-         backgroundColor: Colors.white
-     ),
-     localizationsDelegates: context.localizationDelegates,
-     supportedLocales: context.supportedLocales,
-     locale: context.locale,
-     onGenerateRoute: generateRoute,
-     initialRoute: PostPage.id,
-   ));
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => LanguageProvider()),
+          ChangeNotifierProvider(create: (_) => PostProvider())
+        ],
+        child: MaterialApp(
+          title: 'Home',
+          theme: ThemeData(
+              accentColor: generateMaterialColor(Color(0xffFF8500)),
+              primaryColor: generateMaterialColor(Color(0xff04D4F0)),
+              scaffoldBackgroundColor: generateMaterialColor(Color(0xffE9E9E9)),
+              appBarTheme: Theme.of(context)
+                  .appBarTheme
+                  .copyWith(brightness: Brightness.dark),
+              backgroundColor: Colors.white),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          onGenerateRoute: generateRoute,
+          initialRoute: ItemDetailPage.id,
+        ));
   }
 }
-
