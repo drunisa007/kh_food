@@ -16,15 +16,17 @@ class CategoryListPage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          /** Search Bar */
-          _buildSearchBar(context),
-          /** Category horizontal list */
-          _buildCategoryList(context),
-          /** Item Group and List */
-          _itemGroupAndList(context),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            /** Search Bar */
+            _buildSearchBar(context),
+            /** Category horizontal list */
+            _buildCategoryList(context),
+            /** Item Group and List */
+            _itemGroupAndList(context),
+          ],
+        ),
       ),
     );
   }
@@ -32,26 +34,29 @@ class CategoryListPage extends StatelessWidget {
   IntrinsicHeight _itemGroupAndList(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        margin: const EdgeInsets.only(top: 10),
+        // margin: const EdgeInsets.only(top: 10),
         height: MediaQuery.of(context).size.height * 0.7,
         width: double.infinity,
         child: Row(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * 0.25,
+              width: MediaQuery.of(context).size.width * 0.2,
               color: Colors.white,
               child: ListView.builder(
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
+                      horizontal: 12,
+                      vertical: 12,
                     ),
                     child: Center(
                       child: Text(
                         'Shellfish',
-                        style: Theme.of(context).textTheme.button,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
@@ -60,82 +65,95 @@ class CategoryListPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 5),
-              width: MediaQuery.of(context).size.width * 0.733,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: ListView.builder(
                 itemBuilder: (context, index) => Container(
-                  margin: const EdgeInsets.only(bottom: 4),
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  height: 110,
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  height: 120,
                   color: Colors.white,
-                  child: IntrinsicHeight(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          child: Image.network(
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6pOYTMt92poGqURa-Ri_y7flqZYsAc2iAtA&usqp=CAU',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'This is food name',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 80,
+                              // color: Colors.blue,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.network(
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzs7FHeq3wN0oc_ZBxlhsR3yWZFnGXG9hlLg&usqp=CAU',
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              Text('Product of French',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  )),
-                              Text(
-                                'Distributed by KH Company Ltd.,',
-                                style: Theme.of(context).textTheme.caption,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: 100,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'This is food name',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text('Product of French',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      )),
+                                  Text(
+                                    'Distributed by KH Company Ltd.,',
+                                    style: Theme.of(context).textTheme.caption,
+                                  ),
+                                  Text(
+                                    '12500Ks/Bottle',
+                                    style: TextStyle(
+                                      color: Colors.amber,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                '12500Ks/Bottle',
-                                style: TextStyle(
-                                  color: Colors.amber,
-                                ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.05,
+                              child: Column(
+                                children: [
+                                  Expanded(child: SizedBox()),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.055,
+                                    padding: const EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(45),
+                                        color: Colors.lightBlueAccent),
+                                    child: Icon(
+                                      Icons.shopping_cart_outlined,
+                                      color: Colors.white,
+                                      size: 15,
+                                    ),
+                                  ),
+                                  SizedBox(height: 5)
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.05,
-                          child: Column(
-                            children: [
-                              Expanded(child: SizedBox()),
-                              Container(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.055,
-                                padding: const EdgeInsets.all(2),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(45),
-                                    color: Colors.lightBlueAccent),
-                                child: Icon(
-                                  Icons.shopping_cart_outlined,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                              ),
-                              SizedBox(height: 5)
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                      Container(color: Colors.black12, height: 1)
+                    ],
                   ),
                 ),
                 itemCount: 10,
@@ -149,8 +167,15 @@ class CategoryListPage extends StatelessWidget {
 
   Container _buildCategoryList(BuildContext context) {
     return Container(
-      color: Colors.white,
-      height: MediaQuery.of(context).size.height * 0.11,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.black12,
+          ),
+        ),
+        color: Colors.white,
+      ),
+      height: MediaQuery.of(context).size.height * 0.1,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -158,14 +183,18 @@ class CategoryListPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: 55.0,
-                height: 55.0,
+                width: 45.0,
+                height: 45.0,
                 margin: const EdgeInsets.symmetric(
                   horizontal: 7,
                   vertical: 2,
                 ),
                 decoration: BoxDecoration(
                   color: const Color(0xff7c94b6),
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 0.5,
+                  ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
@@ -184,7 +213,7 @@ class CategoryListPage extends StatelessWidget {
               Text(
                 'Sea Food',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 11,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -219,6 +248,10 @@ class CategoryListPage extends StatelessWidget {
                 decoration: InputDecoration(
                   isDense: true,
                   hintText: 'Search',
+                  hintStyle: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey,
+                  ),
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   errorBorder: InputBorder.none,
@@ -226,34 +259,12 @@ class CategoryListPage extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Theme.of(context).primaryColor,
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 1,
-                ),
-                child: Text(
-                  'Search',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                alignment: Alignment.center,
-              ),
-            ),
           ],
         ),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        border: Border.all(
-          color: Theme.of(context).primaryColor,
-        ),
+        color: Colors.white,
       ),
     );
   }
