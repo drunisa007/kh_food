@@ -9,6 +9,177 @@ class CartPage extends StatelessWidget {
       title: Text('Cart'),
       centerTitle: true,
     );
+
+    void _popupModal() {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Amount Detail',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.close),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      height: 90,
+                      width: MediaQuery.of(context).size.width * 0.72,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          height: 80,
+                          width: 80,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGPQHKtD3xpGBiBFT3yMpHiWKdVDotE-UH-w&usqp=CAU',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        itemCount: 3,
+                      ),
+                    ),
+                    SizedBox(width: 5),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text('Total 10'),
+                          Icon(Icons.arrow_forward_ios_rounded),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Product Amount',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '234500MMK',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Discount',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '234500MMK',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.amber,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Coupon Card',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '234500MMK',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.amber,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total Discount',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '234500MMK',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 13,
+                        color: Colors.amber,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total Amount',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '234500MMK',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: appBar,
       bottomNavigationBar: BottomAppBar(
@@ -70,30 +241,33 @@ class CartPage extends StatelessWidget {
                       SizedBox(
                         width: 4,
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 0.5,
-                            color: Colors.amber,
-                          ),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Detail',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.amber,
-                              ),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_up,
-                              size: 16,
+                      InkWell(
+                        onTap: _popupModal,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 0.5,
                               color: Colors.amber,
                             ),
-                          ],
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Detail',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_up,
+                                size: 16,
+                                color: Colors.amber,
+                              ),
+                            ],
+                          ),
                         ),
                       )
                     ],
