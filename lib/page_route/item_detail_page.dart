@@ -122,7 +122,7 @@ class ItemDetailPage extends StatelessWidget {
             height: 10,
           ),
           Container(
-            height: 110,
+            height: 130,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
@@ -132,7 +132,8 @@ class ItemDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
-                        width: 100,
+                        width: 90,
+                        height: 90,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(2),
                           child: Image.network(
@@ -145,7 +146,12 @@ class ItemDetailPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('500Ks/1'),
+                          Text(
+                            '500Ks/1',
+                            style: TextStyle(
+                              color: Colors.amber,
+                            ),
+                          ),
                           Container(
                             width: 20,
                             padding: const EdgeInsets.all(2),
@@ -168,7 +174,7 @@ class ItemDetailPage extends StatelessWidget {
             ),
           ),
           Container(
-            height: 110,
+            height: 130,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
@@ -178,7 +184,8 @@ class ItemDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
-                        width: 100,
+                        width: 90,
+                        height: 90,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(2),
                           child: Image.network(
