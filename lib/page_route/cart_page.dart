@@ -206,7 +206,7 @@ class CartPage extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Total Amount:',
+                        'Amount:',
                         style: TextStyle(
                           fontSize: 12,
                         ),
@@ -226,7 +226,7 @@ class CartPage extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Total Dsicount:',
+                        'Dsicount:',
                         style: TextStyle(
                           fontSize: 12,
                         ),
@@ -238,38 +238,6 @@ class CartPage extends StatelessWidget {
                           color: Colors.amber,
                         ),
                       ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      InkWell(
-                        onTap: _popupModal,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 0.5,
-                              color: Colors.amber,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Detail',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.amber,
-                                ),
-                              ),
-                              Icon(
-                                Icons.keyboard_arrow_up,
-                                size: 16,
-                                color: Colors.amber,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ],
@@ -277,15 +245,19 @@ class CartPage extends StatelessWidget {
               SizedBox(
                 width: 5,
               ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Check Out'),
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(
-          Icons.access_alarm,
-          color: Colors.white,
         ),
       ),
       body: _buildBody(context),
