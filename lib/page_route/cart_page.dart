@@ -187,9 +187,9 @@ class CartPage extends StatelessWidget {
           height: appBar.preferredSize.height + 20,
           child: Row(
             children: [
-              Checkbox(
-                value: true,
-                onChanged: (value) {},
+              Container(
+                margin: const EdgeInsets.all(10),
+                child: _buildCircleCheckbox(),
               ),
               Text(
                 'Select All',
@@ -266,19 +266,18 @@ class CartPage extends StatelessWidget {
 
   Container _buildBody(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      // padding: const EdgeInsets.all(10),
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         itemBuilder: (context, index) => Container(
-          margin: EdgeInsets.only(bottom: 4),
+          margin: EdgeInsets.only(bottom: 10),
           padding: const EdgeInsets.all(5),
           color: Colors.white,
           child: Column(
             children: [
               //? display warehouse
               _displayWarehouse(),
-              Divider(),
               //? display product
               _displayProduct(),
 
@@ -292,24 +291,23 @@ class CartPage extends StatelessWidget {
     );
   }
 
-  Row _displayWarehouse() {
-    return Row(
-      children: [
-        Checkbox(
-          value: true,
-          onChanged: (value) {
-            // TODO: Checkbox changes
-          },
-        ),
-        Text(
-          'Products from Hlaing Thar Yar Warehouse',
-          style: TextStyle(
-            color: Colors.amber,
-            fontWeight: FontWeight.w500,
-            fontSize: 13,
+  Widget _displayWarehouse() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          _buildCircleCheckbox(),
+          SizedBox(width: 10),
+          Text(
+            'Products from Hlaing Thar Yar Warehouse',
+            style: TextStyle(
+              color: Colors.black87,
+              fontWeight: FontWeight.w500,
+              fontSize: 13,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -397,10 +395,8 @@ class CartPage extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Checkbox(
-                  value: true,
-                  onChanged: (value) {},
-                ),
+                _buildCircleCheckbox(),
+                SizedBox(width: 5),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.2,
                   height: 80,
@@ -409,9 +405,9 @@ class CartPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(width: 5),
+                SizedBox(width: 10),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.35,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -423,21 +419,11 @@ class CartPage extends StatelessWidget {
                           fontSize: 13,
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.lightBlue,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        child: Text(
-                          'Fast 15min devliber',
-                          style: TextStyle(
-                            color: Colors.lightBlue,
-                            fontSize: 12,
-                          ),
+                      Text(
+                        'Fast 15min devliber',
+                        style: TextStyle(
+                          color: Colors.lightBlue,
+                          fontSize: 12,
                         ),
                       ),
                       Text(
@@ -464,7 +450,7 @@ class CartPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: 0.5,
-                              color: Colors.black,
+                              color: Colors.black12,
                               style: BorderStyle.solid,
                             ),
                           ),
@@ -474,17 +460,22 @@ class CartPage extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 30,
+                          width: 35,
                           height: 20,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: 0.5,
-                              color: Colors.black,
+                              color: Colors.black12,
                               style: BorderStyle.solid,
                             ),
                           ),
-                          child: Text('1'),
+                          child: Text(
+                            '1',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                         Container(
                           width: 20,
@@ -493,7 +484,7 @@ class CartPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: 0.5,
-                              color: Colors.black,
+                              color: Colors.black12,
                               style: BorderStyle.solid,
                             ),
                           ),
@@ -514,4 +505,36 @@ class CartPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildCircleCheckbox() {
+  return Container(
+    width: 20,
+    height: 20,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: Colors.blue,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey,
+          blurRadius: 1,
+          offset: Offset(1, 2), // Shadow position
+        ),
+      ],
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(1.0),
+      child: true
+          ? Icon(
+              Icons.check,
+              size: 16.0,
+              color: Colors.white,
+            )
+          : Icon(
+              Icons.check_box_outline_blank,
+              size: 30.0,
+              color: Colors.blue,
+            ),
+    ),
+  );
 }
